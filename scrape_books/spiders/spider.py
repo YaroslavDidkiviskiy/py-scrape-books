@@ -1,6 +1,8 @@
 import scrapy
 import re
 
+from scrape_books.items import ScrapeBooksItem
+
 
 class BookSpider(scrapy.Spider):
     name = "book_spider"
@@ -19,7 +21,7 @@ class BookSpider(scrapy.Spider):
             yield response.follow(next_page, callback=self.parse)
 
     def parse_book(self, response):
-        book = {}
+        book = ScrapeBooksItem()
         # Extract title
         book['title'] = response.css('div.product_main h1::text').get()
 

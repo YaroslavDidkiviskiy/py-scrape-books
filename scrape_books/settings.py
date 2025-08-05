@@ -9,6 +9,9 @@
 
 BOT_NAME = "scrape_books"
 
+ITEM_PIPELINES = {
+    "scrape_books.pipelines.ScrapeBooksPipeline": 300,
+}
 SPIDER_MODULES = ["scrape_books.spiders"]
 NEWSPIDER_MODULE = "scrape_books.spiders"
 
